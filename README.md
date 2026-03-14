@@ -108,5 +108,5 @@ This is intentionally a single-file application for ease of editing, hosting, an
 
 ## Maintained by
 
-**Corporate Infotech — Recruitment Operations Team**  
+**Corporate Infotech Private Limited - Kushagra Sharma (Human Resource Intern)**  
 For data updates or tracker issues, edit `index.html` directly or raise a request with the team admin.
