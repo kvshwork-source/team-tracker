@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team Project Tracker</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -20,26 +20,27 @@
     --on-track: #6af7c8;
     --delayed: #f76a8c;
     --at-risk: #f7c46a;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background: var(--bg);
-    font-family: 'DM Mono', monospace;
+    font-family: var(--font-body);
     color: var(--text);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* Ambient background */
   body::before {
     content: '';
     position: fixed;
-    top: -40%;
-    left: -20%;
-    width: 70%;
-    height: 70%;
+    top: -40%; left: -20%;
+    width: 70%; height: 70%;
     background: radial-gradient(ellipse, rgba(124,106,247,0.08) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
@@ -47,10 +48,8 @@
   body::after {
     content: '';
     position: fixed;
-    bottom: -30%;
-    right: -10%;
-    width: 60%;
-    height: 60%;
+    bottom: -30%; right: -10%;
+    width: 60%; height: 60%;
     background: radial-gradient(ellipse, rgba(247,106,140,0.06) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
@@ -58,7 +57,6 @@
 
   .wrapper { position: relative; z-index: 1; padding: 36px 32px; max-width: 1400px; margin: 0 auto; }
 
-  /* Header */
   header {
     display: flex;
     align-items: flex-end;
@@ -69,32 +67,36 @@
   }
 
   .header-left h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 2.2rem;
-    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: -0.01em;
     color: var(--text);
     line-height: 1;
   }
 
-  .header-left h1 span { color: var(--accent); }
+  .header-left h1 span { color: var(--accent); font-style: italic; }
 
   .header-sub {
-    margin-top: 6px;
-    font-size: 0.75rem;
+    margin-top: 7px;
+    font-size: 0.72rem;
     color: var(--muted);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--font-mono);
+    font-weight: 300;
   }
 
   .live-badge {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--accent3);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--font-mono);
+    font-weight: 400;
   }
 
   .live-dot {
@@ -109,6 +111,37 @@
     50% { opacity: 0.4; transform: scale(0.7); }
   }
 
+  /* Summary bar */
+  .summary-bar {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding: 18px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    flex-wrap: wrap;
+  }
+
+  .summary-item { display: flex; flex-direction: column; }
+  .summary-val {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: -0.02em;
+  }
+  .summary-lbl {
+    font-size: 0.62rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+    font-weight: 300;
+  }
+
+  .divider { width: 1px; background: var(--border); align-self: stretch; }
+
   /* Filter tabs */
   .filters {
     display: flex;
@@ -118,14 +151,14 @@
   }
 
   .filter-btn {
-    padding: 7px 18px;
+    padding: 7px 20px;
     border-radius: 100px;
     border: 1px solid var(--border);
     background: transparent;
     color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
     cursor: pointer;
     transition: all 0.2s;
     text-transform: uppercase;
@@ -144,7 +177,6 @@
     gap: 20px;
   }
 
-  /* Person card */
   .person-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -174,58 +206,59 @@
 
   .avatar {
     width: 44px; height: 44px;
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
     flex-shrink: 0;
+    letter-spacing: 0;
   }
 
   .person-info { flex: 1; min-width: 0; }
 
   .person-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: 1rem;
     color: var(--text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 0;
   }
 
   .person-role {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     color: var(--muted);
-    letter-spacing: 0.07em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-top: 2px;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+    font-weight: 300;
   }
 
-  .person-stats {
-    display: flex;
-    gap: 14px;
-    text-align: right;
-  }
+  .person-stats { display: flex; gap: 14px; text-align: right; }
 
-  .stat { }
   .stat-val {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.1rem;
     color: var(--text);
   }
   .stat-lbl {
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 1px;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+    font-family: var(--font-mono);
+    font-weight: 300;
   }
 
-  /* Projects inside card */
+  /* Projects */
   .projects-list { padding: 14px 22px 18px; display: flex; flex-direction: column; gap: 11px; }
 
   .project-row {
@@ -248,23 +281,26 @@
   }
 
   .project-name {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.85rem;
     color: var(--text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 0.01em;
   }
 
   .status-chip {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 3px 9px;
     border-radius: 100px;
     white-space: nowrap;
     flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-weight: 500;
   }
 
   .status-on-track { background: rgba(106,247,200,0.12); color: var(--on-track); border: 1px solid rgba(106,247,200,0.25); }
@@ -278,47 +314,39 @@
     gap: 8px;
   }
 
-  /* Countdown */
   .countdown {
-    font-size: 0.68rem;
+    font-size: 0.67rem;
     color: var(--muted);
     display: flex;
     align-items: center;
     gap: 5px;
+    font-family: var(--font-mono);
   }
+
   .countdown .days {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
     color: var(--text);
   }
   .countdown.urgent .days { color: var(--delayed); }
   .countdown.soon   .days { color: var(--at-risk); }
   .countdown.ok     .days { color: var(--on-track); }
 
-  /* Progress bar for filled/open */
   .fill-bar-wrap { flex: 1; max-width: 180px; }
   .fill-bar-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     color: var(--muted);
     margin-bottom: 4px;
+    font-family: var(--font-mono);
+    font-weight: 300;
   }
   .fill-bar-labels span { color: var(--text); }
-  .fill-bar {
-    height: 4px;
-    border-radius: 100px;
-    background: var(--border);
-    overflow: hidden;
-  }
-  .fill-bar-inner {
-    height: 100%;
-    border-radius: 100px;
-    transition: width 0.6s ease;
-  }
+  .fill-bar { height: 4px; border-radius: 100px; background: var(--border); overflow: hidden; }
+  .fill-bar-inner { height: 100%; border-radius: 100px; transition: width 0.6s ease; }
 
-  /* Roles expandable */
   .roles-wrap {
     display: none;
     margin-top: 10px;
@@ -335,8 +363,8 @@
     justify-content: space-between;
     font-size: 0.7rem;
   }
-  .role-name { color: var(--muted); }
-  .role-counts { display: flex; gap: 10px; }
+  .role-name { color: var(--muted); font-family: var(--font-body); font-weight: 400; }
+  .role-counts { display: flex; gap: 10px; font-family: var(--font-mono); font-size: 0.65rem; }
   .role-open   { color: var(--accent2); }
   .role-filled { color: var(--accent3); }
 
@@ -344,45 +372,16 @@
     background: none;
     border: none;
     color: var(--muted);
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: 'DM Mono', monospace;
+    font-family: var(--font-mono);
     padding: 0;
     transition: color 0.15s;
     flex-shrink: 0;
   }
   .expand-btn:hover { color: var(--accent); }
-
-  /* Summary bar */
-  .summary-bar {
-    display: flex;
-    gap: 24px;
-    margin-bottom: 28px;
-    padding: 16px 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    flex-wrap: wrap;
-  }
-
-  .summary-item { display: flex; flex-direction: column; }
-  .summary-val {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.6rem;
-    letter-spacing: -0.03em;
-  }
-  .summary-lbl {
-    font-size: 0.65rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 2px;
-  }
-
-  .divider { width: 1px; background: var(--border); align-self: stretch; }
 
   @media (max-width: 600px) {
     .wrapper { padding: 20px 16px; }
@@ -407,7 +406,7 @@
 
   <div class="summary-bar" id="summaryBar"></div>
 
-  <div class="filters" id="filters">
+  <div class="filters">
     <button class="filter-btn active" onclick="filterCards('all', this)">All People</button>
     <button class="filter-btn" onclick="filterCards('On Track', this)">On Track</button>
     <button class="filter-btn" onclick="filterCards('At Risk', this)">At Risk</button>
@@ -419,303 +418,77 @@
 </div>
 
 <script>
-// ─── DATA ────────────────────────────────────────────────────────────────────
-const people = [
-  {
-    name: "Kushagra Sharma",
-    role: "Recruitment Lead",
-    color: "#7c6af7",
-    projects: [
-      {
-        name: "ONGC",
-        status: "On Track",
-        deadline: daysFromNow(38),
-        roles: [
-          { title: "Sr. Petroleum Engineer", open: 4, filled: 2 },
-          { title: "HSE Officer", open: 3, filled: 3 },
-          { title: "Drilling Supervisor", open: 2, filled: 0 },
-        ]
-      },
-      {
-        name: "BiharONE",
-        status: "At Risk",
-        deadline: daysFromNow(14),
-        roles: [
-          { title: "Project Manager", open: 1, filled: 0 },
-          { title: "Field Coordinator", open: 5, filled: 3 },
-        ]
-      },
-      {
-        name: "IOCL",
-        status: "On Track",
-        deadline: daysFromNow(55),
-        roles: [
-          { title: "Refinery Operator", open: 6, filled: 5 },
-          { title: "Safety Inspector", open: 2, filled: 2 },
-        ]
-      },
-      {
-        name: "MEA",
-        status: "Delayed",
-        deadline: daysFromNow(-3),
-        roles: [
-          { title: "Protocol Officer", open: 2, filled: 2 },
-          { title: "Translator", open: 3, filled: 1 },
-        ]
-      },
-      {
-        name: "CRIS",
-        status: "On Track",
-        deadline: daysFromNow(62),
-        roles: [
-          { title: "Software Architect", open: 3, filled: 2 },
-          { title: "Data Analyst", open: 4, filled: 4 },
-          { title: "QA Engineer", open: 2, filled: 1 },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Priya Mehta",
-    role: "Talent Acquisition",
-    color: "#f76a8c",
-    projects: [
-      {
-        name: "NTPC Vindhyachal",
-        status: "On Track",
-        deadline: daysFromNow(45),
-        roles: [
-          { title: "Plant Engineer", open: 5, filled: 3 },
-          { title: "Electrician (Sr.)", open: 8, filled: 6 },
-        ]
-      },
-      {
-        name: "AIIMS Delhi",
-        status: "At Risk",
-        deadline: daysFromNow(10),
-        roles: [
-          { title: "Resident Doctor", open: 12, filled: 7 },
-          { title: "Lab Technician", open: 6, filled: 5 },
-          { title: "Admin Officer", open: 3, filled: 2 },
-        ]
-      },
-      {
-        name: "GAIL India",
-        status: "On Track",
-        deadline: daysFromNow(70),
-        roles: [
-          { title: "Pipeline Engineer", open: 4, filled: 4 },
-          { title: "Safety Officer", open: 2, filled: 1 },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Rahul Verma",
-    role: "Senior Recruiter",
-    color: "#6af7c8",
-    projects: [
-      {
-        name: "Indian Railways",
-        status: "Delayed",
-        deadline: daysFromNow(-7),
-        roles: [
-          { title: "Station Master", open: 15, filled: 9 },
-          { title: "Track Engineer", open: 10, filled: 10 },
-        ]
-      },
-      {
-        name: "DRDO",
-        status: "On Track",
-        deadline: daysFromNow(80),
-        roles: [
-          { title: "Research Scientist", open: 5, filled: 2 },
-          { title: "Systems Engineer", open: 3, filled: 3 },
-          { title: "Tech Officer", open: 4, filled: 4 },
-        ]
-      },
-      {
-        name: "BHEL Haridwar",
-        status: "At Risk",
-        deadline: daysFromNow(8),
-        roles: [
-          { title: "Mechanical Engineer", open: 7, filled: 4 },
-          { title: "Welder (Certified)", open: 5, filled: 5 },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Anjali Singh",
-    role: "HR Specialist",
-    color: "#f7c46a",
-    projects: [
-      {
-        name: "ISRO Bangalore",
-        status: "On Track",
-        deadline: daysFromNow(90),
-        roles: [
-          { title: "Aerospace Engineer", open: 4, filled: 2 },
-          { title: "Telemetry Analyst", open: 2, filled: 2 },
-        ]
-      },
-      {
-        name: "NIC",
-        status: "On Track",
-        deadline: daysFromNow(33),
-        roles: [
-          { title: "Network Engineer", open: 6, filled: 5 },
-          { title: "Cybersecurity Analyst", open: 3, filled: 2 },
-          { title: "Cloud Architect", open: 2, filled: 0 },
-        ]
-      },
-      {
-        name: "ECIL",
-        status: "Delayed",
-        deadline: daysFromNow(-1),
-        roles: [
-          { title: "Electronics Engineer", open: 8, filled: 5 },
-          { title: "PCB Designer", open: 3, filled: 3 },
-        ]
-      },
-      {
-        name: "Doordarshan",
-        status: "At Risk",
-        deadline: daysFromNow(6),
-        roles: [
-          { title: "Broadcast Engineer", open: 4, filled: 2 },
-          { title: "Content Producer", open: 2, filled: 2 },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Vikram Nair",
-    role: "Recruitment Manager",
-    color: "#f7a06a",
-    projects: [
-      {
-        name: "Coal India",
-        status: "On Track",
-        deadline: daysFromNow(52),
-        roles: [
-          { title: "Mining Engineer", open: 10, filled: 7 },
-          { title: "Safety Officer", open: 4, filled: 4 },
-          { title: "Geologist", open: 3, filled: 2 },
-        ]
-      },
-      {
-        name: "SAIL",
-        status: "At Risk",
-        deadline: daysFromNow(12),
-        roles: [
-          { title: "Steel Plant Operator", open: 15, filled: 9 },
-          { title: "Quality Controller", open: 5, filled: 4 },
-        ]
-      },
-      {
-        name: "IOB",
-        status: "On Track",
-        deadline: daysFromNow(41),
-        roles: [
-          { title: "Branch Manager", open: 8, filled: 7 },
-          { title: "Loan Officer", open: 6, filled: 6 },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Sneha Gupta",
-    role: "Talent Partner",
-    color: "#a06af7",
-    projects: [
-      {
-        name: "UIDAI",
-        status: "On Track",
-        deadline: daysFromNow(48),
-        roles: [
-          { title: "Data Privacy Officer", open: 2, filled: 2 },
-          { title: "Biometrics Engineer", open: 3, filled: 2 },
-          { title: "Backend Developer", open: 4, filled: 3 },
-        ]
-      },
-      {
-        name: "NHA (Ayushman)",
-        status: "Delayed",
-        deadline: daysFromNow(-5),
-        roles: [
-          { title: "Healthcare Analyst", open: 5, filled: 3 },
-          { title: "Claims Officer", open: 8, filled: 5 },
-        ]
-      },
-      {
-        name: "NPCI",
-        status: "On Track",
-        deadline: daysFromNow(65),
-        roles: [
-          { title: "Payment Systems Eng.", open: 5, filled: 4 },
-          { title: "Fraud Analyst", open: 3, filled: 3 },
-        ]
-      },
-    ]
-  },
-  {
-    name: "Arjun Kapoor",
-    role: "Recruitment Analyst",
-    color: "#6af0f7",
-    projects: [
-      {
-        name: "TRAI",
-        status: "On Track",
-        deadline: daysFromNow(58),
-        roles: [
-          { title: "Spectrum Engineer", open: 3, filled: 2 },
-          { title: "Policy Analyst", open: 2, filled: 2 },
-        ]
-      },
-      {
-        name: "SEBI",
-        status: "At Risk",
-        deadline: daysFromNow(9),
-        roles: [
-          { title: "Market Analyst", open: 6, filled: 4 },
-          { title: "Legal Officer", open: 3, filled: 2 },
-          { title: "IT Auditor", open: 2, filled: 2 },
-        ]
-      },
-      {
-        name: "FCI",
-        status: "On Track",
-        deadline: daysFromNow(75),
-        roles: [
-          { title: "Warehouse Manager", open: 20, filled: 15 },
-          { title: "Logistics Coordinator", open: 8, filled: 7 },
-        ]
-      },
-      {
-        name: "NABARD",
-        status: "Delayed",
-        deadline: daysFromNow(-2),
-        roles: [
-          { title: "Agricultural Officer", open: 6, filled: 4 },
-          { title: "Rural Dev. Specialist", open: 4, filled: 4 },
-        ]
-      },
-    ]
-  }
-];
-
 function daysFromNow(n) {
   const d = new Date();
   d.setDate(d.getDate() + n);
   return d;
 }
 
-// ─── RENDER ──────────────────────────────────────────────────────────────────
+const people = [
+  {
+    name: "Kushagra Sharma", role: "Recruitment Lead", color: "#7c6af7",
+    projects: [
+      { name: "ONGC", status: "On Track", deadline: daysFromNow(38), roles: [{ title: "Sr. Petroleum Engineer", open: 4, filled: 2 }, { title: "HSE Officer", open: 3, filled: 3 }, { title: "Drilling Supervisor", open: 2, filled: 0 }] },
+      { name: "BiharONE", status: "At Risk", deadline: daysFromNow(14), roles: [{ title: "Project Manager", open: 1, filled: 0 }, { title: "Field Coordinator", open: 5, filled: 3 }] },
+      { name: "IOCL", status: "On Track", deadline: daysFromNow(55), roles: [{ title: "Refinery Operator", open: 6, filled: 5 }, { title: "Safety Inspector", open: 2, filled: 2 }] },
+      { name: "MEA", status: "Delayed", deadline: daysFromNow(-3), roles: [{ title: "Protocol Officer", open: 2, filled: 2 }, { title: "Translator", open: 3, filled: 1 }] },
+      { name: "CRIS", status: "On Track", deadline: daysFromNow(62), roles: [{ title: "Software Architect", open: 3, filled: 2 }, { title: "Data Analyst", open: 4, filled: 4 }, { title: "QA Engineer", open: 2, filled: 1 }] },
+    ]
+  },
+  {
+    name: "Priya Mehta", role: "Talent Acquisition", color: "#f76a8c",
+    projects: [
+      { name: "NTPC Vindhyachal", status: "On Track", deadline: daysFromNow(45), roles: [{ title: "Plant Engineer", open: 5, filled: 3 }, { title: "Electrician (Sr.)", open: 8, filled: 6 }] },
+      { name: "AIIMS Delhi", status: "At Risk", deadline: daysFromNow(10), roles: [{ title: "Resident Doctor", open: 12, filled: 7 }, { title: "Lab Technician", open: 6, filled: 5 }, { title: "Admin Officer", open: 3, filled: 2 }] },
+      { name: "GAIL India", status: "On Track", deadline: daysFromNow(70), roles: [{ title: "Pipeline Engineer", open: 4, filled: 4 }, { title: "Safety Officer", open: 2, filled: 1 }] },
+    ]
+  },
+  {
+    name: "Rahul Verma", role: "Senior Recruiter", color: "#6af7c8",
+    projects: [
+      { name: "Indian Railways", status: "Delayed", deadline: daysFromNow(-7), roles: [{ title: "Station Master", open: 15, filled: 9 }, { title: "Track Engineer", open: 10, filled: 10 }] },
+      { name: "DRDO", status: "On Track", deadline: daysFromNow(80), roles: [{ title: "Research Scientist", open: 5, filled: 2 }, { title: "Systems Engineer", open: 3, filled: 3 }, { title: "Tech Officer", open: 4, filled: 4 }] },
+      { name: "BHEL Haridwar", status: "At Risk", deadline: daysFromNow(8), roles: [{ title: "Mechanical Engineer", open: 7, filled: 4 }, { title: "Welder (Certified)", open: 5, filled: 5 }] },
+    ]
+  },
+  {
+    name: "Anjali Singh", role: "HR Specialist", color: "#f7c46a",
+    projects: [
+      { name: "ISRO Bangalore", status: "On Track", deadline: daysFromNow(90), roles: [{ title: "Aerospace Engineer", open: 4, filled: 2 }, { title: "Telemetry Analyst", open: 2, filled: 2 }] },
+      { name: "NIC", status: "On Track", deadline: daysFromNow(33), roles: [{ title: "Network Engineer", open: 6, filled: 5 }, { title: "Cybersecurity Analyst", open: 3, filled: 2 }, { title: "Cloud Architect", open: 2, filled: 0 }] },
+      { name: "ECIL", status: "Delayed", deadline: daysFromNow(-1), roles: [{ title: "Electronics Engineer", open: 8, filled: 5 }, { title: "PCB Designer", open: 3, filled: 3 }] },
+      { name: "Doordarshan", status: "At Risk", deadline: daysFromNow(6), roles: [{ title: "Broadcast Engineer", open: 4, filled: 2 }, { title: "Content Producer", open: 2, filled: 2 }] },
+    ]
+  },
+  {
+    name: "Vikram Nair", role: "Recruitment Manager", color: "#f7a06a",
+    projects: [
+      { name: "Coal India", status: "On Track", deadline: daysFromNow(52), roles: [{ title: "Mining Engineer", open: 10, filled: 7 }, { title: "Safety Officer", open: 4, filled: 4 }, { title: "Geologist", open: 3, filled: 2 }] },
+      { name: "SAIL", status: "At Risk", deadline: daysFromNow(12), roles: [{ title: "Steel Plant Operator", open: 15, filled: 9 }, { title: "Quality Controller", open: 5, filled: 4 }] },
+      { name: "IOB", status: "On Track", deadline: daysFromNow(41), roles: [{ title: "Branch Manager", open: 8, filled: 7 }, { title: "Loan Officer", open: 6, filled: 6 }] },
+    ]
+  },
+  {
+    name: "Sneha Gupta", role: "Talent Partner", color: "#a06af7",
+    projects: [
+      { name: "UIDAI", status: "On Track", deadline: daysFromNow(48), roles: [{ title: "Data Privacy Officer", open: 2, filled: 2 }, { title: "Biometrics Engineer", open: 3, filled: 2 }, { title: "Backend Developer", open: 4, filled: 3 }] },
+      { name: "NHA (Ayushman)", status: "Delayed", deadline: daysFromNow(-5), roles: [{ title: "Healthcare Analyst", open: 5, filled: 3 }, { title: "Claims Officer", open: 8, filled: 5 }] },
+      { name: "NPCI", status: "On Track", deadline: daysFromNow(65), roles: [{ title: "Payment Systems Eng.", open: 5, filled: 4 }, { title: "Fraud Analyst", open: 3, filled: 3 }] },
+    ]
+  },
+  {
+    name: "Arjun Kapoor", role: "Recruitment Analyst", color: "#6af0f7",
+    projects: [
+      { name: "TRAI", status: "On Track", deadline: daysFromNow(58), roles: [{ title: "Spectrum Engineer", open: 3, filled: 2 }, { title: "Policy Analyst", open: 2, filled: 2 }] },
+      { name: "SEBI", status: "At Risk", deadline: daysFromNow(9), roles: [{ title: "Market Analyst", open: 6, filled: 4 }, { title: "Legal Officer", open: 3, filled: 2 }, { title: "IT Auditor", open: 2, filled: 2 }] },
+      { name: "FCI", status: "On Track", deadline: daysFromNow(75), roles: [{ title: "Warehouse Manager", open: 20, filled: 15 }, { title: "Logistics Coordinator", open: 8, filled: 7 }] },
+      { name: "NABARD", status: "Delayed", deadline: daysFromNow(-2), roles: [{ title: "Agricultural Officer", open: 6, filled: 4 }, { title: "Rural Dev. Specialist", open: 4, filled: 4 }] },
+    ]
+  }
+];
+
 function getDaysLeft(deadline) {
-  const now = new Date();
-  const diff = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
-  return diff;
+  return Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
 }
 
 function countdownClass(days) {
@@ -745,8 +518,7 @@ function renderSummary() {
       proj.roles.forEach(r => { totalOpen += r.open; totalFilled += r.filled; });
     });
   });
-  const bar = document.getElementById('summaryBar');
-  bar.innerHTML = `
+  document.getElementById('summaryBar').innerHTML = `
     <div class="summary-item"><div class="summary-val" style="color:#7c6af7">${people.length}</div><div class="summary-lbl">Team Members</div></div>
     <div class="divider"></div>
     <div class="summary-item"><div class="summary-val">${totalProjects}</div><div class="summary-lbl">Active Projects</div></div>
@@ -759,20 +531,18 @@ function renderSummary() {
   `;
 }
 
-function renderGrid(filter = 'all') {
+function renderGrid(filter) {
+  filter = filter || 'all';
   const grid = document.getElementById('grid');
   grid.innerHTML = '';
   people.forEach((person, pi) => {
     const projects = filter === 'all' ? person.projects : person.projects.filter(p => p.status === filter);
     if (!projects.length) return;
-
     const { open, filled } = totalRoles(person);
     const initials = person.name.split(' ').map(n => n[0]).join('').slice(0, 2);
-
     const card = document.createElement('div');
     card.className = 'person-card';
     card.style.animationDelay = `${pi * 0.05}s`;
-
     card.innerHTML = `
       <div class="person-header">
         <div class="avatar" style="background:${person.color}22; color:${person.color}">${initials}</div>
@@ -781,8 +551,8 @@ function renderGrid(filter = 'all') {
           <div class="person-role">${person.role}</div>
         </div>
         <div class="person-stats">
-          <div class="stat"><div class="stat-val">${projects.length}</div><div class="stat-lbl">Projects</div></div>
-          <div class="stat"><div class="stat-val" style="color:${person.color}">${filled}/${open}</div><div class="stat-lbl">Filled</div></div>
+          <div><div class="stat-val">${projects.length}</div><div class="stat-lbl">Projects</div></div>
+          <div><div class="stat-val" style="color:${person.color}">${filled}/${open}</div><div class="stat-lbl">Filled</div></div>
         </div>
       </div>
       <div class="projects-list">
@@ -802,7 +572,6 @@ function renderProject(proj, pi, idx, color) {
   const barColor = pct === 100 ? 'var(--on-track)' : pct > 60 ? 'var(--at-risk)' : 'var(--delayed)';
   const daysLabel = days < 0 ? `${Math.abs(days)}d overdue` : days === 0 ? 'Due today' : `${days}d left`;
   const rolesId = `roles-${pi}-${idx}`;
-
   return `
     <div class="project-row" onclick="toggleRoles('${rolesId}', this)">
       <div class="project-top">
@@ -840,7 +609,7 @@ function renderProject(proj, pi, idx, color) {
   `;
 }
 
-function toggleRoles(id, row) {
+function toggleRoles(id) {
   const el = document.getElementById(id);
   const btn = document.getElementById('btn-' + id);
   el.classList.toggle('open');
@@ -853,11 +622,12 @@ function filterCards(filter, btn) {
   renderGrid(filter === 'all' ? 'all' : filter);
 }
 
-// ─── LIVE COUNTDOWN UPDATE ────────────────────────────────────────────────────
-// Re-render every minute to keep countdowns current
-setInterval(() => renderGrid(document.querySelector('.filter-btn.active')?.textContent?.trim() === 'All People' ? 'all' : document.querySelector('.filter-btn.active')?.textContent?.trim()), 60000);
+setInterval(() => {
+  const activeBtn = document.querySelector('.filter-btn.active');
+  const label = activeBtn ? activeBtn.textContent.trim() : 'All People';
+  renderGrid(label === 'All People' ? 'all' : label);
+}, 60000);
 
-// Init
 renderSummary();
 renderGrid();
 </script>
