@@ -63,47 +63,24 @@ This dashboard is designed to be embedded into SharePoint via the **Embed web pa
 
 ## How to Update the Tracker
 
-All data lives in the `✏️ EASY EDIT ZONE` at the top of the `<script>` block inside `index.html`. You never need to touch the rendering engine below it.
-
 ### Editing on GitHub (recommended)
 
 1. Open the repository on GitHub
 2. Click `index.html`
 3. Click the **pencil icon (✏️)** to edit
-4. Make your changes in the Edit Zone (see reference below)
+4. Make your changes directly in the `people` data array inside the `<script>` block
 5. Click **Commit changes** — the live site updates within 1–2 minutes
 
 ### What you can update
 
 | Task | What to change |
 |---|---|
-| Add a new team member | Copy the person template and fill in name, role, color, projects |
+| Add a new team member | Copy an existing person block and update name, role, color, projects |
 | Add a project to someone | Add a new project block inside their `projects: [ ]` array |
 | Update deadline | Change the number in `daysFromNow(X)` — positive = days from today, negative = overdue |
 | Update filled/open counts | Change the `filled:` and `open:` values inside each role |
 | Change project status | Update `"On Track"` / `"At Risk"` / `"Delayed"` |
 | Remove a person or project | Delete their block from the data array |
-
-### Adding a new person — template
-
-```js
-{
-  name: "Full Name",
-  role: "Job Title",
-  color: "#hex",        // avatar color — pick any hex
-  projects: [
-    {
-      name: "Client / Project Name",
-      status: "On Track",     // "On Track" | "At Risk" | "Delayed"
-      deadline: daysFromNow(30),
-      roles: [
-        { title: "Role Title", open: 5, filled: 2 },
-        { title: "Role Title", open: 3, filled: 3 },
-      ]
-    },
-  ]
-},
-```
 
 ---
 
