@@ -25,18 +25,6 @@ Team Tracker is a lightweight, zero-dependency web dashboard designed to give re
 
 ---
 
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | HTML5, CSS3, Vanilla JavaScript |
-| Fonts | Playfair Display · IBM Plex Sans · IBM Plex Mono (Google Fonts) |
-| Hosting | GitHub Pages |
-| Embedding | SharePoint iframe (via Embed web part) |
-| Dependencies | None — zero libraries, zero frameworks |
-
----
-
 ## Live Demo
 
 🔗 **[https://kvshwork-source.github.io/team-tracker/](https://kvshwork-source.github.io/team-tracker/)**
