@@ -30,25 +30,6 @@ Team Tracker is a lightweight, zero-dependency web dashboard designed to give re
 🔗 **[https://kvshwork-source.github.io/team-tracker/](https://kvshwork-source.github.io/team-tracker/)**
 
 ---
-
-## SharePoint Embed
-
-This dashboard is designed to be embedded into SharePoint via the **Embed web part**. Use the following iframe snippet on any SharePoint modern page:
-
-```html
-<iframe
-  src="https://kvshwork-source.github.io/team-tracker/"
-  width="100%"
-  height="900"
-  frameborder="0"
-  style="border:none; min-height:900px;">
-</iframe>
-```
-
-> **Admin Note:** The domain `kvshwork-source.github.io` must be whitelisted in SharePoint Admin Center under **SharePoint → More Features → HTML Field Security** for the embed to render correctly.
-
----
-
 ## How to Update the Tracker
 
 ### Editing on GitHub (recommended)
