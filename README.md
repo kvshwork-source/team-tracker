@@ -53,17 +53,6 @@ Team Tracker is a lightweight, zero-dependency web dashboard designed to give re
 
 ---
 
-## Project Structure
-
-```
-team-tracker/
-└── index.html      # Entire application — HTML, CSS, JS, and data in one file
-```
-
-This is intentionally a single-file application for ease of editing, hosting, and embedding. No build tools, no package managers, no deployment pipeline.
-
----
-
 ## Status
 
 | Item | Status |
