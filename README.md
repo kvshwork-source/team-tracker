@@ -66,5 +66,5 @@ Team Tracker is a lightweight, zero-dependency web dashboard designed to give re
 
 ## Maintained by
 
-**Corporate Infotech Private Limited - Kushagra Sharma (Human Resource Intern)**  
-For data updates or tracker issues raise a request with me or you can message me on microsoft teams
+**Kushagra Sharma (Human Resource Intern)**  
+For data updates or tracker issues raise a request with me 
