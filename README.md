@@ -66,5 +66,5 @@ Team Tracker is a lightweight, zero-dependency web dashboard designed to give re
 
 ## Maintained by
 
-**Kushagra Sharma (Human Resource Intern)**  
+**Kushagra Sharma**  
 For data updates or tracker issues raise a request with me 
