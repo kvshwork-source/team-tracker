@@ -1,4 +1,4 @@
-# Team Tracker — Recruitment Pipeline Dashboard
+# Team Tracker - Recruitment Pipeline Dashboard
 
 > A live, interactive recruitment pipeline tracker built for internal team use. Provides real-time visibility into project deadlines, role fulfillment progress, and team workload across all active hiring engagements.
 
@@ -14,14 +14,14 @@ Team Tracker is a lightweight, zero-dependency web dashboard designed to give re
 
 ## Features
 
-- **Live Countdown Timers** — Deadlines auto-update every minute based on today's date. No manual date management needed.
-- **Role Fulfillment Tracking** — Visual progress bars show filled vs. open positions per project at a glance.
-- **Status Classification** — Each project is tagged as `On Track`, `At Risk`, or `Delayed` with color-coded indicators.
-- **Per-Person Workload View** — Each team member has their own card showing all assigned projects and aggregate stats.
-- **Expandable Role Breakdown** — Click any project to drill down into individual role titles and their fill status.
-- **Filter by Status** — Instantly filter the dashboard to show only delayed, at-risk, or on-track projects across the team.
-- **Summary Bar** — Top-level KPIs: total team members, active projects, positions filled, open positions, and delayed count.
-- **Fully Responsive** — Works on desktop and mobile browsers.
+- **Live Countdown Timers** - Deadlines auto-update every minute based on today's date. No manual date management needed.
+- **Role Fulfillment Tracking** - Visual progress bars show filled vs. open positions per project at a glance.
+- **Status Classification** - Each project is tagged as `On Track`, `At Risk`, or `Delayed` with color-coded indicators.
+- **Per-Person Workload View** - Each team member has their own card showing all assigned projects and aggregate stats.
+- **Expandable Role Breakdown** - Click any project to drill down into individual role titles and their fill status.
+- **Filter by Status** - Instantly filter the dashboard to show only delayed, at-risk, or on-track projects across the team.
+- **Summary Bar** - Top-level KPIs: total team members, active projects, positions filled, open positions, and delayed count.
+- **Fully Responsive** - Works on desktop and mobile browsers.
 
 ---
 
